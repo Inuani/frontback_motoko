@@ -13,7 +13,7 @@ seed.set(base, 0);
 seed.fill(0);
 const testIdentity = Ed25519KeyIdentity.generate(seed);
 
-const canisterId = "bw4dl-smaaa-aaaaa-qaacq-cai"; // Your canister ID
+const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai"; // Your canister ID
 const HOST = `http://127.0.0.1:4943`;
 
 // First authorize the identity

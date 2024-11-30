@@ -21,7 +21,6 @@ type CallbackStrategy = record {
   token : Token;
   callback : func (Token) -> (StreamingCallbackHttpResponse) query;
 };
-type Cat = record { age : nat; name : text };
 type ChunkId = nat;
 type ClearArguments = record {};
 type CommitBatchArguments = record {
@@ -75,7 +74,7 @@ type StreamingStrategy = variant { Callback : CallbackStrategy };
 type Time = int;
 type Token = record { arbitrary_data : text };
 type UnsetAssetContentArguments = record { key : Key; content_encoding : text };
-type _anon_class_13_1 = service {
+type _anon_class_8_1 = service {
   authorize : (principal) -> ();
   clear : (ClearArguments) -> ();
   commit_batch : (CommitBatchArguments) -> ();
@@ -94,7 +93,6 @@ type _anon_class_13_1 = service {
         total_length : nat;
       },
     ) query;
-  getCats : () -> (vec Cat);
   http_request : (HttpRequest) -> (HttpResponse) query;
   http_request_streaming_callback : (StreamingCallbackToken) -> (
       StreamingCallbackHttpResponse__1,
@@ -114,5 +112,6 @@ type _anon_class_13_1 = service {
       },
     ) -> ();
   unset_asset_content : (UnsetAssetContentArguments) -> ();
+  whoAmI : () -> (principal) query;
 };
-service : () -> _anon_class_13_1
+service : () -> _anon_class_8_1

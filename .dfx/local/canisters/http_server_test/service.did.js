@@ -29,7 +29,6 @@ export const idlFactory = ({ IDL }) => {
     'batch_id' : BatchId,
     'operations' : IDL.Vec(BatchOperationKind),
   });
-  const Cat = IDL.Record({ 'age' : IDL.Nat, 'name' : IDL.Text });
   const HeaderField = IDL.Tuple(IDL.Text, IDL.Text);
   const HttpRequest = IDL.Record({
     'url' : IDL.Text,
@@ -85,7 +84,7 @@ export const idlFactory = ({ IDL }) => {
   const Path = IDL.Text;
   const Contents = IDL.Vec(IDL.Nat8);
   const Key__1 = IDL.Text;
-  const _anon_class_13_1 = IDL.Service({
+  const _anon_class_8_1 = IDL.Service({
     'authorize' : IDL.Func([IDL.Principal], [], []),
     'clear' : IDL.Func([ClearArguments], [], []),
     'commit_batch' : IDL.Func([CommitBatchArguments], [], []),
@@ -114,7 +113,6 @@ export const idlFactory = ({ IDL }) => {
         ],
         ['query'],
       ),
-    'getCats' : IDL.Func([], [IDL.Vec(Cat)], []),
     'http_request' : IDL.Func([HttpRequest], [HttpResponse], ['query']),
     'http_request_streaming_callback' : IDL.Func(
         [StreamingCallbackToken],
@@ -140,7 +138,8 @@ export const idlFactory = ({ IDL }) => {
         [],
       ),
     'unset_asset_content' : IDL.Func([UnsetAssetContentArguments], [], []),
+    'whoAmI' : IDL.Func([], [IDL.Principal], ['query']),
   });
-  return _anon_class_13_1;
+  return _anon_class_8_1;
 };
 export const init = ({ IDL }) => { return []; };

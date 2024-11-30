@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>My First IC Web Page</title>
-  <style>
-    body {
+    <meta charset="utf-8" />
+    <title>Starter page</title>
+    <style>
+         body {
       font-family: Arial, sans-serif;
       max-width: 800px;
       margin: 0 auto;
@@ -50,25 +50,65 @@
       font-size: 0.9em;
       color: #666;
     }
-  </style>
+
+        .auth-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .ii-button {
+            background-color: #29ABE2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .ii-button:hover {
+            background-color: #1a8ac0;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #29ABE2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello from the Internet Computer!</h1>
-  <p>This is a static page served from my canister.</p>
-  
-  <div class="energy-bar-container">
+    <h1>Hello from the Internet Computer!</h1>
+    <div class="auth-container">
+        <div id="auth-section">
+            <button id="auth-button" class="ii-button">Sign in</button>
+        </div>
+        <p>Current Principal: <span id="principal-display">Loading...</span></p>
+    </div>
+
+    <div class="energy-bar-container">
     <h3>Energy level</h3>
     <div class="energy-bar">
-      <div class="energy-fill" id="energy-fill"></div>
-      <div class="energy-text" id="energy-text"></div>
+        <div class="energy-fill" id="energy-fill"></div>
+        <div class="energy-text" id="energy-text"></div>
     </div>
     <div class="energy-details">
-      <span id="raw-balance"></span>
-      <span id="percentage"></span>
+        <span id="raw-balance"></span>
+        <span id="percentage"></span>
     </div>
-  </div>
+</div>
 
-  <!-- <img src="unnamed.webp" alt="" width="200px"> -->
-  <script src="index.js" type="module"></script>
+    <script src="bundle.js" type="module"></script>
 </body>
 </html>

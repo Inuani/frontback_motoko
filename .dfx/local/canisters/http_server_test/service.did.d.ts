@@ -23,7 +23,6 @@ export interface CallbackStrategy {
   'token' : Token,
   'callback' : [Principal, string],
 }
-export interface Cat { 'age' : bigint, 'name' : string }
 export type ChunkId = bigint;
 export type ClearArguments = {};
 export interface CommitBatchArguments {
@@ -83,7 +82,7 @@ export interface UnsetAssetContentArguments {
   'key' : Key,
   'content_encoding' : string,
 }
-export interface _anon_class_13_1 {
+export interface _anon_class_8_1 {
   'authorize' : ActorMethod<[Principal], undefined>,
   'clear' : ActorMethod<[ClearArguments], undefined>,
   'commit_batch' : ActorMethod<[CommitBatchArguments], undefined>,
@@ -104,7 +103,6 @@ export interface _anon_class_13_1 {
       'total_length' : bigint,
     }
   >,
-  'getCats' : ActorMethod<[], Array<Cat>>,
   'http_request' : ActorMethod<[HttpRequest], HttpResponse>,
   'http_request_streaming_callback' : ActorMethod<
     [StreamingCallbackToken],
@@ -128,7 +126,8 @@ export interface _anon_class_13_1 {
     undefined
   >,
   'unset_asset_content' : ActorMethod<[UnsetAssetContentArguments], undefined>,
+  'whoAmI' : ActorMethod<[], Principal>,
 }
-export interface _SERVICE extends _anon_class_13_1 {}
+export interface _SERVICE extends _anon_class_8_1 {}
 export declare const idlFactory: IDL.InterfaceFactory;
 export declare const init: (args: { IDL: typeof IDL }) => IDL.Type[];
