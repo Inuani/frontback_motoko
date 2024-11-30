@@ -1,0 +1,118 @@
+type AssetDetails = record {
+  key : Key;
+  encodings : vec AssetEncodingDetails;
+  content_type : text;
+};
+type AssetEncodingDetails = record {
+  modified : Time;
+  sha256 : opt blob;
+  length : nat;
+  content_encoding : text;
+};
+type BatchId = nat;
+type BatchOperationKind = variant {
+  CreateAsset : CreateAssetArguments;
+  UnsetAssetContent : UnsetAssetContentArguments;
+  DeleteAsset : DeleteAssetArguments;
+  SetAssetContent : SetAssetContentArguments;
+  Clear : ClearArguments;
+};
+type CallbackStrategy = record {
+  token : Token;
+  callback : func (Token) -> (StreamingCallbackHttpResponse) query;
+};
+type Cat = record { age : nat; name : text };
+type ChunkId = nat;
+type ClearArguments = record {};
+type CommitBatchArguments = record {
+  batch_id : BatchId;
+  operations : vec BatchOperationKind;
+};
+type Contents = blob;
+type CreateAssetArguments = record { key : Key; content_type : text };
+type DeleteAssetArguments = record { key : Key };
+type HeaderField = record { text; text };
+type HttpRequest = record {
+  url : text;
+  method : text;
+  body : blob;
+  headers : vec HeaderField;
+};
+type HttpResponse = record {
+  body : blob;
+  headers : vec HeaderField;
+  upgrade : opt bool;
+  streaming_strategy : opt StreamingStrategy;
+  status_code : nat16;
+};
+type Key = text;
+type Key__1 = text;
+type Path = text;
+type SetAssetContentArguments = record {
+  key : Key;
+  sha256 : opt blob;
+  chunk_ids : vec ChunkId;
+  content_encoding : text;
+};
+type StreamingCallbackHttpResponse = record { token : opt Token; body : blob };
+type StreamingCallbackHttpResponse__1 = record {
+  token : opt StreamingCallbackToken__1;
+  body : blob;
+};
+type StreamingCallbackToken = record {
+  key : text;
+  sha256 : opt blob;
+  index : nat;
+  content_encoding : text;
+};
+type StreamingCallbackToken__1 = record {
+  key : text;
+  sha256 : opt blob;
+  index : nat;
+  content_encoding : text;
+};
+type StreamingStrategy = variant { Callback : CallbackStrategy };
+type Time = int;
+type Token = record { arbitrary_data : text };
+type UnsetAssetContentArguments = record { key : Key; content_encoding : text };
+type _anon_class_13_1 = service {
+  authorize : (principal) -> ();
+  clear : (ClearArguments) -> ();
+  commit_batch : (CommitBatchArguments) -> ();
+  create_asset : (CreateAssetArguments) -> ();
+  create_batch : (record {}) -> (record { batch_id : BatchId });
+  create_chunk : (record { content : blob; batch_id : BatchId }) -> (
+      record { chunk_id : ChunkId },
+    );
+  delete_asset : (DeleteAssetArguments) -> ();
+  get : (record { key : Key; accept_encodings : vec text }) -> (
+      record {
+        content : blob;
+        sha256 : opt blob;
+        content_type : text;
+        content_encoding : text;
+        total_length : nat;
+      },
+    ) query;
+  getCats : () -> (vec Cat);
+  http_request : (HttpRequest) -> (HttpResponse) query;
+  http_request_streaming_callback : (StreamingCallbackToken) -> (
+      StreamingCallbackHttpResponse__1,
+    ) query;
+  http_request_update : (HttpRequest) -> (HttpResponse);
+  invalidate_cache : () -> ();
+  list : (record {}) -> (vec AssetDetails) query;
+  retrieve : (Path) -> (Contents) query;
+  set_asset_content : (SetAssetContentArguments) -> ();
+  store : (
+      record {
+        key : Key__1;
+        content : blob;
+        sha256 : opt blob;
+        content_type : text;
+        content_encoding : text;
+      },
+    ) -> ();
+  unset_asset_content : (UnsetAssetContentArguments) -> ();
+};
+service : () -> _anon_class_13_1

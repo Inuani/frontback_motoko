@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My First IC Web Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2f80ed;
+    }
+    .energy-bar-container {
+      width: 100%;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .energy-bar {
+      width: 100%;
+      height: 30px;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    .energy-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50, #8BC34A);
+      transition: width 0.5s ease-in-out;
+      border-radius: 5px;
+    }
+    .energy-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      line-height: 30px;
+      color: #000;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+    }
+    .energy-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello from the Internet Computer!</h1>
+  <p>This is a static page served from my canister.</p>
+  
+  <div class="energy-bar-container">
+    <h3>Energy level</h3>
+    <div class="energy-bar">
+      <div class="energy-fill" id="energy-fill"></div>
+      <div class="energy-text" id="energy-text"></div>
+    </div>
+    <div class="energy-details">
+      <span id="raw-balance"></span>
+      <span id="percentage"></span>
+    </div>
+  </div>
+
+  <!-- <img src="unnamed.webp" alt="" width="200px"> -->
+  <script src="index.js" type="module"></script>
+</body>
+</html>

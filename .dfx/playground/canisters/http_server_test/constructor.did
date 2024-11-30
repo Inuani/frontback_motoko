@@ -1,0 +1,29 @@
+type CallbackStrategy = record {
+  token : Token;
+  callback : func (Token) -> (StreamingCallbackHttpResponse) query;
+};
+type Cat = record { age : nat; name : text };
+type HeaderField = record { text; text };
+type HttpRequest = record {
+  url : text;
+  method : text;
+  body : blob;
+  headers : vec HeaderField;
+};
+type HttpResponse = record {
+  body : blob;
+  headers : vec HeaderField;
+  upgrade : opt bool;
+  streaming_strategy : opt StreamingStrategy;
+  status_code : nat16;
+};
+type StreamingCallbackHttpResponse = record { token : opt Token; body : blob };
+type StreamingStrategy = variant { Callback : CallbackStrategy };
+type Token = record { arbitrary_data : text };
+type _anon_class_10_1 = service {
+  getCats : () -> (vec Cat);
+  http_request : (HttpRequest) -> (HttpResponse) query;
+  http_request_update : (HttpRequest) -> (HttpResponse);
+  invalidate_cache : () -> ();
+};
+service : () -> _anon_class_10_1
