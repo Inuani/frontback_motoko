@@ -1,6 +1,6 @@
-.dfx
-.mops
-.vscode
-node_modules
+.dfx/
+.mops/
+.vscode/
+node_modules/
 package-lock.json
 repomix-output.txt
