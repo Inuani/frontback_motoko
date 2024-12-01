@@ -16,7 +16,7 @@ const createActor = (canisterId, options = {}) => {
         ...options
     });
     
-    // Only fetch the root key in development
+    // only fetch root key in local dev
     agent.fetchRootKey().catch(console.error);
     
     return Actor.createActor(idlFactory, {
