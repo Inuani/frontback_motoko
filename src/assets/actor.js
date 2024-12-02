@@ -1,6 +1,10 @@
 import { HttpAgent, Actor } from "@dfinity/agent";
 
-const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai";
+const canisterId = process.env.CANISTER_ID_HTTP_SERVER_TEST;
+const host = process.env.DFX_NETWORK === "ic" 
+  ? "https://ic0.app"
+  : "http://localhost:4943";
+
 
 const idlFactory = ({ IDL }) => {
   return IDL.Service({
@@ -11,11 +15,14 @@ const idlFactory = ({ IDL }) => {
 
 const createActor = (options = {}) => {
   const agent = new HttpAgent({
-    host: "http://localhost:4943",
+    host,
     ...options
   });
+  
   // only fetch root key in local dev
-  agent.fetchRootKey().catch(console.error);
+  if (process.env.DFX_NETWORK !== "ic") {
+    agent.fetchRootKey().catch(console.error);
+  }
   return Actor.createActor(idlFactory, {
     agent,
     canisterId,

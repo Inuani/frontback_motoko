@@ -13,7 +13,7 @@ function formatCycles(cycles) {
     return cycles.toString();
 }
 
-const MAX_CYCLES = 10_000_000_000_000;
+const MAX_CYCLES = 5_000_000_000_000;
 
 async function updateBalance() {
     try {

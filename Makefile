@@ -4,3 +4,4 @@
 
 # icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/raygen/identity.pem upload 4623w-oqaaa-aaaak-qtrjq-cai /index.html=src/assets/index.html
 
+# npx repomix --ignore ".mops/,.dfx/,.vscode,node_module/,.gitignore,src/assets/bundle.js"
