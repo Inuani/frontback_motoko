@@ -1,3 +1,5 @@
+import { actor, updateActorIdentity } from './actor.js';
+
 function formatCycles(cycles) {
     if (cycles >= 1_000_000_000_000) {
         return (cycles / 1_000_000_000_000).toFixed(2) + ' T';
@@ -15,14 +17,16 @@ const MAX_CYCLES = 10_000_000_000_000;
 
 async function updateBalance() {
     try {
-        const response = await fetch('/balance', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        // const response = await fetch('/balance', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
         
-        const balance = parseInt(await response.text());
+        // const balance = parseInt(await response.text());
+
+        const balance = Number(await actor.get_cycle_balance());
         
         // Calculate percentage (capped at 100%)
         const percentage = Math.min((balance / MAX_CYCLES) * 100, 100);

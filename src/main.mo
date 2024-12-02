@@ -20,6 +20,10 @@ shared ({ caller = creator }) actor class () {
     return caller;
 };
 
+public query func get_cycle_balance() : async Nat {
+  return Cycles.balance();
+};
+
     server.get(
   "/balance",
   func(_ : Request, res : ResponseClass) : async Response {

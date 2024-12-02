@@ -1,9 +1,12 @@
+require('dotenv').config();
+
 const { HttpAgent } = require("@dfinity/agent");
 const fs = require("fs");
 const path = require("path");
 const { Ed25519KeyIdentity } = require("@dfinity/identity");
 const { AssetManager } = require("@dfinity/assets");
 const { spawn } = require("child_process");
+
 
 // Create a test identity
 const encoder = new TextEncoder();
@@ -13,8 +16,11 @@ seed.set(base, 0);
 seed.fill(0);
 const testIdentity = Ed25519KeyIdentity.generate(seed);
 
-const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai"; // Your canister ID
+const canisterId = process.env.CANISTER_ID_HTTP_SERVER_TEST
+
 const HOST = `http://127.0.0.1:4943`;
+
+// const HOST = `https://ic0.app`;
 
 // First authorize the identity
 console.log("Authorizing identity...");
