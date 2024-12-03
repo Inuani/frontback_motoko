@@ -1,4 +1,4 @@
-import { actor, updateActorIdentity } from './actor.js';
+import { actor } from './actor.js';
 
 function formatCycles(cycles) {
     if (cycles >= 1_000_000_000_000) {

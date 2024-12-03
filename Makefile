@@ -4,4 +4,20 @@
 
 # icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/raygen/identity.pem upload 4623w-oqaaa-aaaak-qtrjq-cai /index.html=src/assets/index.html
 
-# npx repomix --ignore ".mops/,.dfx/,.vscode,node_module/,.gitignore,src/assets/bundle.js"
+# npx repomix --ignore ".mops/,.dfx/,.vscode,node_module/,.gitignore,src/frontend/public/bundle.js,src/frontend/public/edge.html"   
+
+# dfx canister call --ic 4623w-oqaaa-aaaak-qtrjq-cai invalidate_cache
+
+# dfx canister --ic deposit-cycles 1000000000000 4623w-oqaaa-aaaak-qtrjq-cai
+
+
+
+upasic: # upload assets on ic & clear cache
+	npx webpack
+	npm run upload
+	dfx canister call --network ic http_server_test invalidate_cache
+
+upaslocal: # upload assets locally & clear cache
+	npx webpack
+	npm run upload
+	dfx canister call http_server_test invalidate_cache
