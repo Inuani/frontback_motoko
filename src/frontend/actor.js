@@ -1,6 +1,6 @@
 import { HttpAgent, Actor } from "@dfinity/agent";
 
-const canisterId = process.env.CANISTER_ID_HTTP_SERVER_TEST;
+const canisterId = process.env.CANISTER_ID_FRONTBACK_MOTOKO;
 const host = process.env.DFX_NETWORK === "ic" 
   ? "https://ic0.app"
   : "http://localhost:4943";

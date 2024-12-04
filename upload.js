@@ -189,7 +189,7 @@ const seedHex = fs.readFileSync('identity.json', 'utf8');
 const seed = Buffer.from(JSON.parse(seedHex), 'hex');
 const generatedIdentity = Ed25519KeyIdentity.generate(seed);
 
-const canisterId = process.env.CANISTER_ID_HTTP_SERVER_TEST;
+const canisterId = process.env.CANISTER_ID_FRONTBACK_MOTOKO;
 const isIc = process.env.DFX_NETWORK === 'ic';
 const HOST = isIc ? "https://ic0.app" : "http://127.0.0.1:4943";
 
@@ -198,7 +198,7 @@ const dfxArgs = ["canister"];
 if (isIc) dfxArgs.push("--network", "ic");
 dfxArgs.push(
   "call",
-  "http_server_test",
+  "frontback_motoko",
   "authorize",
   `(principal "${generatedIdentity.getPrincipal().toText()}")`
 );

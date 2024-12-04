@@ -1,6 +1,6 @@
 {
     "canisters": {
-      "http_server_test": {
+      "frontback_motoko": {
         "main": "src/backend/main.mo",
         "type": "motoko"
       },

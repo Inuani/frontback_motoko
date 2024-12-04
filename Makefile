@@ -15,9 +15,9 @@
 upasic: # upload assets on ic & clear cache
 	npx webpack
 	npm run upload
-	dfx canister call --network ic http_server_test invalidate_cache
+	dfx canister call --network ic frontback_motoko invalidate_cache
 
 upaslocal: # upload assets locally & clear cache
 	npx webpack
 	npm run upload
-	dfx canister call http_server_test invalidate_cache
+	dfx canister call frontback_motoko invalidate_cache
