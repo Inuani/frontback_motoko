@@ -1,7 +1,7 @@
 {
-    "name": "http_demo",
+    "name": "frontback_motoko",
     "version": "0.1.0",
-    "description": "A simple HTTP server demo",
+    "description": "A motoko backend and frontend server",
     "scripts": {
         "upload": "node upload.js",
         "dev": "mo-dev -y",
